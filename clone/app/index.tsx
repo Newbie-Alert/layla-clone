@@ -9,7 +9,21 @@ export default function Index() {
         justifyContent: "center",
         alignItems: "center",
       }}>
-      <MapView provider="google" />
+      <MapView
+        provider="google"
+        showsUserLocation={true}
+        initialRegion={{
+          latitude: 37.562935718,
+          longitude: 126.962356734,
+          latitudeDelta: 0.01,
+          longitudeDelta: 0.01,
+        }}
+        style={{
+          flex: 1,
+          width: "100%",
+          height: "100%",
+        }}
+      />
     </View>
   );
 }
