@@ -7,10 +7,9 @@ const listsRouter = express.Router();
 listsRouter.get('/', async (req, res, next) => {
   const param: {
     gu?: string;
-    dong?: string;
   } = req.query;
 
-  // 동 단위로 그룹화, 매물 개수, 동 평균좌표 계산해서 내려쥼
+  // 선택한 구 내에 있는 동들의 그룹. 매물 개수, 동 평균좌표 계산해서 내려쥼
   if (param.gu) {
     const lists = await Lists.aggregate([
       { $match: { cgg_nm: param.gu } },

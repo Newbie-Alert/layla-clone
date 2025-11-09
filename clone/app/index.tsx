@@ -1,7 +1,12 @@
+import { useLocationContext } from "@/providers/LocationProvider";
 import { View } from "react-native";
 import MapView from "react-native-maps";
 
 export default function Index() {
+  const { location, errorMsg } = useLocationContext();
+
+  console.log(location);
+
   return (
     <View
       style={{

@@ -1,4 +1,4 @@
-import type { ConfigContext, ExpoConfig } from '@expo/config'
+import type { ConfigContext, ExpoConfig } from "@expo/config";
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
@@ -12,15 +12,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   newArchEnabled: true,
 
   ios: {
-    "supportsTablet": true
+    supportsTablet: true,
   },
 
   android: {
-      adaptiveIcon: {
+    adaptiveIcon: {
       backgroundColor: "#E6F4FE",
       foregroundImage: "./assets/images/android-icon-foreground.png",
       backgroundImage: "./assets/images/android-icon-background.png",
-      monochromeImage: "./assets/images/android-icon-monochrome.png"
+      monochromeImage: "./assets/images/android-icon-monochrome.png",
     },
     edgeToEdgeEnabled: true,
     predictiveBackGestureEnabled: false,
@@ -30,15 +30,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     ],
     config: {
       googleMaps: {
-        apiKey:process.env.EXPO_PUBLIC_GOOGLE_MAPS_KEY
-      }
+        apiKey: process.env.EXPO_PUBLIC_GOOGLE_MAPS_KEY,
+      },
     },
-    package:'com.tony.bokduckclone'
+    package: "com.tony.bokduckclone",
   },
 
   web: {
     output: "static",
-    favicon: "./assets/images/favicon.png"
+    favicon: "./assets/images/favicon.png",
   },
 
   plugins: [
@@ -51,20 +51,27 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         resizeMode: "contain",
         backgroundColor: "#ffffff",
         dark: {
-          backgroundColor: "#000000"
-        }
-      }
-    ]
+          backgroundColor: "#000000",
+        },
+      },
+    ],
+    [
+      "expo-location",
+      {
+        locationAlwaysAndWhenInUsePermission:
+          "Allow $(PRODUCT_NAME) to use your location.",
+      },
+    ],
   ],
 
   experiments: {
     typedRoutes: true,
-    reactCompiler: true
+    reactCompiler: true,
   },
 
   extra: {
     eas: {
-      projectId: "6141d6db-d4e2-4d8b-aff4-e9759348f0b2"
-    }
-  }
-})
+      projectId: "6141d6db-d4e2-4d8b-aff4-e9759348f0b2",
+    },
+  },
+});
