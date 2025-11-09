@@ -23,7 +23,7 @@ export default function LocationProvider({
 
   useEffect(() => {
     const getLocation = async () => {
-      let { status } = await Location.requestBackgroundPermissionsAsync();
+      let { status } = await Location.requestForegroundPermissionsAsync();
 
       if (status === "granted") {
         setErrorMsg("위치 정보 제공 동의가 필요합니다.");
