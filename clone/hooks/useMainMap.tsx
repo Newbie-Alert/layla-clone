@@ -3,8 +3,8 @@ import { Region } from "react-native-maps";
 
 export default function useMainMap() {
   const initRegion = {
-    latitude: 37.51053070801393,
-    latitudeDelta: 0.57302347457646334,
+    latitude: 37.61053070801393,
+    latitudeDelta: 0.27302347457646334,
     longitude: 126.983706895262,
     longitudeDelta: 0.23732420057056913,
   };
@@ -15,7 +15,6 @@ export default function useMainMap() {
     const maxLatDelta = initRegion.latitudeDelta;
     const maxLonDelta = initRegion.longitudeDelta;
 
-    // 너무 급격한 보정 방지용: 허용 이동 범위 살짝 넓게
     const latBound = 2.0;
     const lonBound = 2.0;
 
