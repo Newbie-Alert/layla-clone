@@ -95,12 +95,22 @@ listsRouter.get('/', async (req, res, next) => {
     res.send(lists);
   }
 
-  if (param.dong && !param.gu) {
+  if (param.dong) {
     const lists = await Lists.aggregate([{ $match: { stdg_nm: param.dong } }]);
     res.send(lists);
   }
 
   res.send(lists);
+});
+
+listsRouter.get('/:id', async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const detailData = await Lists.findById(id);
+    res.send(detailData);
+  } catch (error) {
+    console.log('detail data fetch error');
+  }
 });
 
 export default listsRouter;

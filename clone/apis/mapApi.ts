@@ -43,3 +43,12 @@ export const getListsDongDetail = async (queryParam: string) => {
     console.log("동 매물 상세 리스트 fetch 실패");
   }
 };
+
+export const getItemDetail = async (id: string) => {
+  try {
+    const res = await callAxios(`/lists/${id}`);
+    return res.data;
+  } catch (error) {
+    console.log("매물 상세정보 조회 실패");
+  }
+};
