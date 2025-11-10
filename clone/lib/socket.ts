@@ -1,0 +1,13 @@
+import io, { Socket } from "socket.io-client";
+
+let socket: Socket | null = null;
+
+export function getSocket() {
+  if (!socket) {
+    socket = io("http://211.217.226.59:8080", {
+      transports: ["websocket"],
+      autoConnect: false,
+    });
+  }
+  return socket;
+}

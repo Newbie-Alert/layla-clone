@@ -33,7 +33,7 @@ app.use(morgan('tiny'));
 
 // socket IO
 io.on('connection', (socket) => {
-  console.log('🟢 Connected:', socket.id);
+  console.log('connected:', socket.id);
 
   socket.on('joinRoom', (roomId) => {
     socket.join(roomId);
@@ -59,7 +59,7 @@ io.on('connection', (socket) => {
   });
 
   socket.on('disconnect', () => {
-    console.log('🔴 Disconnected:', socket.id);
+    console.log('disconnected:', socket.id);
   });
 });
 
