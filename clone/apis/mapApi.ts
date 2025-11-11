@@ -2,7 +2,7 @@ import { callAxios } from "@/lib/axios";
 
 export const getListsByGu = async () => {
   try {
-    const res = await callAxios("/lists", {
+    const res = await callAxios.get("/lists", {
       method: "GET",
     });
     const lists = res.data;
@@ -19,7 +19,7 @@ export const getListsByDong = async (queryParam: string) => {
   }
 
   try {
-    const res = await callAxios("/lists", {
+    const res = await callAxios.get("/lists", {
       params: { gu: queryParam },
     });
     return res.data;
@@ -35,7 +35,7 @@ export const getListsDongDetail = async (queryParam: string) => {
   }
 
   try {
-    const res = await callAxios("/lists", {
+    const res = await callAxios.get("/lists", {
       params: { dong: queryParam },
     });
     return res.data;
@@ -46,7 +46,7 @@ export const getListsDongDetail = async (queryParam: string) => {
 
 export const getItemDetail = async (id: string) => {
   try {
-    const res = await callAxios(`/lists/${id}`);
+    const res = await callAxios.get(`/lists/${id}`);
     return res.data;
   } catch (error) {
     console.log("매물 상세정보 조회 실패");

@@ -43,14 +43,14 @@ export default function Chat() {
 
     socket.emit("sendMessage", {
       roomId,
-      senderId: isDevice
-        ? "690da150e3ef1308c7999dff"
-        : "6911b0caf01f9491bf8f8d72",
+      senderId,
       message,
     });
 
     setMessage("");
   };
+
+  console.log(senderId);
 
   return (
     <View style={{ flex: 1, padding: 16, backgroundColor: "white" }}>
@@ -91,6 +91,7 @@ export default function Chat() {
           }}
           value={message}
           onChangeText={setMessage}
+          onSubmitEditing={sendMessage}
         />
         <Button title="전송" onPress={sendMessage} />
       </View>

@@ -1,5 +1,6 @@
 import { createRoom } from "@/apis/chatApis";
 import { getItemDetail } from "@/apis/mapApi";
+import { useAuth } from "@/providers/AuthProvider";
 import { BuildingListItem } from "@/types/mapData/types";
 import { formatPrice } from "@/util/formatPrice";
 import BottomSheet, { BottomSheetView } from "@gorhom/bottom-sheet";
@@ -11,6 +12,7 @@ import { Pressable, ScrollView } from "react-native-gesture-handler";
 import PagerView from "react-native-pager-view";
 
 export default function ItemDetail() {
+  const { auth } = useAuth();
   const router = useRouter();
   const { height } = Dimensions.get("screen");
   const { id } = useLocalSearchParams<{ id: string }>();
@@ -120,7 +122,7 @@ export default function ItemDetail() {
 
                   router.push({
                     pathname: "/(tabs)/chat",
-                    params: { roomId, senderId: "690da150e3ef1308c7999dff" },
+                    params: { roomId, senderId: auth.userId },
                   });
                 } catch (error) {
                   console.log(error);

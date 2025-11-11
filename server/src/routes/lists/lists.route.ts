@@ -93,11 +93,13 @@ listsRouter.get('/', async (req, res, next) => {
     ]);
 
     res.send(lists);
+    return;
   }
 
   if (param.dong) {
     const lists = await Lists.aggregate([{ $match: { stdg_nm: param.dong } }]);
     res.send(lists);
+    return;
   }
 
   res.send(lists);

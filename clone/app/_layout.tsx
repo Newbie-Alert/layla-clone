@@ -1,3 +1,4 @@
+import AuthProvider from "@/providers/AuthProvider";
 import LocationProvider from "@/providers/LocationProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Stack } from "expo-router";
@@ -9,19 +10,22 @@ const queryClient = new QueryClient();
 export default function RootLayout() {
   return (
     <QueryClientProvider client={queryClient}>
-      <LocationProvider>
-        <SafeAreaProvider>
-          <GestureHandlerRootView style={{ flex: 1, backgroundColor: "gray" }}>
-            <SafeAreaView style={{ flex: 1 }}>
-              <Stack
-                screenOptions={{
-                  headerShown: false,
-                }}
-              />
-            </SafeAreaView>
-          </GestureHandlerRootView>
-        </SafeAreaProvider>
-      </LocationProvider>
+      <AuthProvider>
+        <LocationProvider>
+          <SafeAreaProvider>
+            <GestureHandlerRootView
+              style={{ flex: 1, backgroundColor: "gray" }}>
+              <SafeAreaView style={{ flex: 1 }}>
+                <Stack
+                  screenOptions={{
+                    headerShown: false,
+                  }}
+                />
+              </SafeAreaView>
+            </GestureHandlerRootView>
+          </SafeAreaProvider>
+        </LocationProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 }

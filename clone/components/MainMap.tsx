@@ -30,7 +30,6 @@ export default function MainMap() {
       <MapView
         ref={mapRef}
         provider="google"
-        showsUserLocation
         region={region}
         onRegionChangeComplete={handleRegionChangeComplete}
         style={{ flex: 1, width: "100%", height: "100%" }}>

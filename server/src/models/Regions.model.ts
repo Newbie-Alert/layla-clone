@@ -1,14 +1,13 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-type Coords = { lon: number, lat: number }
-
+type Coords = { lon: number; lat: number };
 
 export interface IRegions extends Document {
   do: string;
   gu: string;
   dong: string;
-  dongCoord: Coords; // 동의 평균 좌표
-  gu_coord: Coords; // 구의 평균좌표
+  dongCoord: Coords; // 동 평균 좌표
+  gu_coord: Coords; // 구 평균좌표
 }
 
 const regionSchema = new mongoose.Schema<IRegions>({
@@ -19,14 +18,14 @@ const regionSchema = new mongoose.Schema<IRegions>({
     type: String,
   },
   dong: {
-    type: String
+    type: String,
   },
   dongCoord: {
-    type: Object
+    type: Object,
   },
   gu_coord: {
-    type: Object
-  }
+    type: Object,
+  },
 });
 
 const Region = mongoose.model<IRegions>('Region', regionSchema);

@@ -4,7 +4,7 @@ let socket: Socket | null = null;
 
 export function getSocket() {
   if (!socket) {
-    socket = io("http://211.217.226.59:8080", {
+    socket = io("http://61.73.36.38:8080", {
       transports: ["websocket"],
       autoConnect: false,
     });

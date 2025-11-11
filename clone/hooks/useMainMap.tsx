@@ -41,7 +41,6 @@ export default function useMainMap() {
     const newLatDelta = Math.min(r.latitudeDelta, maxLatDelta);
     const newLonDelta = Math.min(r.longitudeDelta, maxLonDelta);
 
-    // 이전 region과 거의 같으면 setState 생략 (무한루프 방지)
     if (
       Math.abs(newLat - region.latitude) > 0.0001 ||
       Math.abs(newLon - region.longitude) > 0.0001 ||
@@ -68,7 +67,6 @@ export default function useMainMap() {
   );
   const [detail, setDetail] = useState<BuildingListItem[] | null>();
 
-  // ✅ React Query: 구/동 모드에 따라 API 분기
   const { data } = useQuery({
     queryKey: ["main", mode, selected.gu],
     queryFn: async () => {
@@ -94,7 +92,7 @@ export default function useMainMap() {
   const zoomBuffer = 0.2;
   let zoomTimeout: ReturnType<typeof setTimeout>;
 
-  // ✅ 줌 기반 모드 전환
+  // 줌에 따라 mode 변경
   const handleZoomMode = (r: Region) => {
     const zoom = Math.log2(360 / r.longitudeDelta);
 
